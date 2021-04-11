@@ -24,7 +24,25 @@ var orders = {
 
                 return callback();
             });
-      }
+      },
+    putOrder: function(element){
+        //console.log(element);
+        var order = {
+            id: element.id,
+            name: element.name,
+            status_id: 200,
+            api_key: apiKey
+        };
+        console.log(order);
+
+        fetch(`${baseUrl}/orders`, {
+            body: JSON.stringify(order),
+            headers: {
+                "content-type": "application/json"
+            },
+            method: "PUT"
+        });
+    }
 };
 
 export { orders };

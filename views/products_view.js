@@ -28,7 +28,7 @@ var productList = {
             let productElement = document.createElement("p");
             productElement.textContent = product.name;
             productElement.className = "pItem";
-            console.log(product);
+            //console.log(product);
 
             productElement.addEventListener("click", function() {
                 productDetails.showProduct(product);

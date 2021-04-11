@@ -25,6 +25,29 @@ var products = {
         return products.allProducts.filter(function(product) {
             return product.id == productId;
         })[0];
+    },
+
+    putProduct: function(element){
+        //console.log(element);
+        if(element.stock < element.amount){
+            console.log("error");
+        } else {
+            let product = {
+                id: element.product_id,
+                name: element.name,
+                stock: (element.stock - element.amount),
+                api_key: apiKey
+            };
+            console.log(product);
+
+            fetch(`${baseUrl}/products`, {
+                body: JSON.stringify(product),
+                headers: {
+                    "content-type": "application/json"
+                },
+                method: "PUT"
+            });
+        }
     }
 };
 
