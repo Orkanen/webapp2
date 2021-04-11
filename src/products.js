@@ -1,24 +1,23 @@
 "use strict";
-/* global menu */
 
 import { baseUrl, apiKey } from "./vars.js";
 
 var products = {
     allProducts: [],
 
-    getAllProducts: function(callback){
+    getAllProducts: function(callback) {
         if (products.allProducts.length > 0) {
             return callback();
         }
         fetch(`${baseUrl}/products?api_key=${apiKey}`)
-        .then(function (result) {
-            return result.json();
-        })
-        .then(function (result) {
-            products.allProducts = result.data;
+            .then(function (result) {
+                return result.json();
+            })
+            .then(function (result) {
+                products.allProducts = result.data;
 
-            return callback();
-        });
+                return callback();
+            });
     },
 
     getProduct: function(productId) {
@@ -27,9 +26,9 @@ var products = {
         })[0];
     },
 
-    putProduct: function(element){
+    putProduct: function(element) {
         //console.log(element);
-        if(element.stock < element.amount){
+        if (element.stock < element.amount) {
             console.log("error");
         } else {
             let product = {
@@ -38,6 +37,7 @@ var products = {
                 stock: (element.stock - element.amount),
                 api_key: apiKey
             };
+
             console.log(product);
 
             fetch(`${baseUrl}/products`, {

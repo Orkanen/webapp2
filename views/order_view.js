@@ -12,6 +12,7 @@ var orderList = {
     drawOrders: function() {
         window.mainContainer.innerHTML = "";
         let container = document.createElement("main");
+
         container.className = "pContainer";
         //console.log(orders.allOrders);
         let fetch = orders.allOrders;
@@ -22,24 +23,27 @@ var orderList = {
 
         fetch.forEach(element => {
             let orderElement = document.createElement("p");
+
             orderElement.className = "orderer";
             var orderButton = document.createElement("button");
+
             orderButton.textContent = "Complete";
 
-            for(const [key, value] of Object.entries(element)) {
-                if(key == "status_id"){
+            for (const [key, value] of Object.entries(element)) {
+                if (key == "status_id") {
                     continue;
-                } else if (key == "order_items"){
+                } else if (key == "order_items") {
                     let amount = 0;
                     let stock = 0;
                     var stockAmount = [];
+
                     value.forEach(element => {
                         //console.log(element);
-                        for(const [cey, galue] of Object.entries(element)){
+                        for (const [cey, galue] of Object.entries(element)) {
                             //console.log(cey, galue);
                             if (cey == "amount") {
                                 amount = galue;
-                            } else if (cey == "stock"){
+                            } else if (cey == "stock") {
                                 stock = galue;
                             }
                         }
@@ -50,7 +54,6 @@ var orderList = {
                     //console.log(key, value);
                     orderElement.innerHTML += `<li> ${key}: ${value} </li>`;
                 }
-
             }
             orderElement.addEventListener("click", function() {
                 orderList.testOrder(element);
@@ -58,8 +61,8 @@ var orderList = {
             //console.log(element.order_items);
             //console.log(stock);
             productElement.appendChild(orderElement);
-            if(stockAmount.every(Boolean)) {
-                orderButton.addEventListener("click", function(){
+            if (stockAmount.every(Boolean)) {
+                orderButton.addEventListener("click", function() {
                     orders.putOrder(element);
                     element.order_items.forEach(element => {
                         //console.log(element);
@@ -79,20 +82,24 @@ var orderList = {
     testOrder: function(value) {
         window.mainContainer.innerHTML = "";
         let container = document.createElement("main");
+
         container.className = "pContainer";
 
         let header = document.createElement("h1");
+
         header.textContent = value.name + "'s Orders";
         container.appendChild(header);
         //console.log(value.order_items);
         value.order_items.forEach(element => {
             console.log(element);
             let orderElement = document.createElement("p");
+
             orderElement.className = "orderer";
 
-            for(const [key, value] of Object.entries(element)){
+            for (const [key, value] of Object.entries(element)) {
                 if (key == "specifiers") {
                     let test = JSON.parse(value);
+
                     for (const [cey, galue] of Object.entries(test)) {
                         orderElement.innerHTML += (` ${cey}: ${galue},`);
                     }

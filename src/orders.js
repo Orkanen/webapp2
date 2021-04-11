@@ -1,5 +1,4 @@
 "use strict";
-/* global menu */
 
 import { baseUrl, apiKey } from "./vars.js";
 
@@ -16,16 +15,16 @@ var orders = {
             })
             .then(function(result) {
                 let test = result.data;
+
                 test.forEach(element => {
-                    if(element.status == "Ny") {
+                    if (element.status == "Ny") {
                         orders.allOrders.push(element);
                     }
                 });
-
                 return callback();
             });
-      },
-    putOrder: function(element){
+    },
+    putOrder: function(element) {
         //console.log(element);
         var order = {
             id: element.id,
@@ -33,6 +32,7 @@ var orders = {
             status_id: 200,
             api_key: apiKey
         };
+
         console.log(order);
 
         fetch(`${baseUrl}/orders`, {

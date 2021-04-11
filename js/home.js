@@ -1,5 +1,4 @@
 "use strict";
-/* global menu */
 
 import { menu } from "./menu.js";
 
@@ -36,7 +35,7 @@ var home = {
         window.mainContainer.appendChild(information);
         //window.mainContainer.appendChild(image);
         window.rootElement.appendChild(window.mainContainer);
-        menu.showMenu("home");  
+        menu.showMenu("home");
     }
 };
 

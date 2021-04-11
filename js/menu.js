@@ -1,5 +1,4 @@
 "use strict";
-/* global home products */
 
 import { home } from "./home.js";
 import { productList } from "../views/products_view.js";
@@ -11,8 +10,7 @@ var menu = {
 
         var navElements = [{name: "Home", class: "home", nav: home.showHome},
             {name: "Products", class: "products", nav: productList.drawProducts},
-          {name: "Orders", class: "orders", nav: orderList.show}];
-
+            {name: "Orders", class: "orders", nav: orderList.show}];
 
         navElements.forEach(function (element) {
             var navElement = document.createElement("a");

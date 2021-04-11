@@ -1,11 +1,9 @@
 "use strict";
 
 import { menu } from "../js/menu";
-import { products } from "../src/products";
-import { productList } from "./products_view";
 
 var productDetails = {
-    showProduct: function(fetch_product) {
+    showProduct: function(fetchProduct) {
         window.mainContainer.innerHTML = "";
         //let finProduct = Object.values(fetch_product);
         //console.log(finProduct);
@@ -24,17 +22,18 @@ var productDetails = {
             console.log(element);
         });*/
 
-        for (const [key, value] of Object.entries(fetch_product)) {
+        for (const [key, value] of Object.entries(fetchProduct)) {
             console.log(key, value);
             if (key == "specifiers") {
                 prodElement.innerText += (`${key}:`);
                 let test = JSON.parse(value);
                 let temp = "";
+
                 for (const [cey, galue] of Object.entries(test)) {
                     temp += (` ${cey}: ${galue},`);
                 }
                 let editedTemp = temp.slice(0, -1);
-                //prodElement.innerHTML = editedTemp + "\r\n";
+
                 menuBlock += (`<li>${editedTemp}</li>`);
             } else {
                 //prodElement.innerHTML = (`${key}: ${value} ` + "\r\n");

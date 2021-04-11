@@ -1,5 +1,4 @@
 "use strict";
-/* global home */
 
 import { home } from "./home.js";
 

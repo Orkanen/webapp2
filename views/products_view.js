@@ -1,7 +1,5 @@
 "use strict";
 
-/* global menu findProduct */
-
 import { menu } from "../js/menu";
 import { products } from "../src/products";
 import { productDetails } from "./product_details";
@@ -13,7 +11,6 @@ var productList = {
 
     renderProducts: function() {
         window.mainContainer.innerHTML = "";
-        let root = document.getElementById("root");
 
         let container = document.createElement("main");
 
@@ -26,6 +23,7 @@ var productList = {
 
         products.allProducts.map(function (product) {
             let productElement = document.createElement("p");
+
             productElement.textContent = product.name;
             productElement.className = "pItem";
             //console.log(product);
